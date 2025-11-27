@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
@@ -36,11 +36,14 @@ export default function ProductDetailPage() {
   const addToCart = useCart((state) => state.addToCart);
   const { items: wishlistItems, addToWishlist, removeFromWishlist } = useWishlist();
 
+  // Merge all products into one array
   const allProducts: Product[] = [
     ...flashSalesProducts,
     ...bestSellingProducts,
     ...newArrivalsProducts,
   ];
+
+  // Find product by ID
   const product = allProducts.find((p) => p.id === productId);
 
   if (!product) {
@@ -48,10 +51,12 @@ export default function ProductDetailPage() {
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Product not found</h1>
-          <Button className="bg-destructive hover:bg-destructive/90 text-destructive-foreground flex items-center gap-2">
-            <ArrowLeft size={18} />
-            Back to Home
-          </Button>
+          <Link href="/">
+            <Button className="bg-destructive hover:bg-destructive/90 text-destructive-foreground flex items-center gap-2">
+              <ArrowLeft size={18} />
+              Back to Home
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -60,7 +65,7 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     addToCart({
       ...product,
-      image: product.image ?? "/placeholder.svg",
+      image: product.image ?? "/placeholder.svg", // ensure string
       quantity,
       inStock: true,
     });
@@ -75,7 +80,12 @@ export default function ProductDetailPage() {
       removeFromWishlist(product.id);
       setWishlistFeedback("Removed from Wishlist");
     } else {
-      addToWishlist({ ...product, quantity: 1, inStock: true });
+      addToWishlist({
+        ...product,
+        quantity: 1,
+        inStock: true,
+        image: product.image ?? "/placeholder.svg", // ensure string
+      });
       setWishlistFeedback("Added to Wishlist");
     }
     setTimeout(() => setWishlistFeedback(null), 2000);
@@ -85,7 +95,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navbar */}
       <nav className="border-b border-border px-4 py-4 md:px-8">
-        <Link href="/" className="text-muted-foreground hover:text-foreground">
+        <Link href="/">
           <Button className="bg-destructive hover:bg-destructive/90 text-destructive-foreground flex items-center gap-2">
             <ArrowLeft size={18} />
             Back to Home
@@ -98,7 +108,7 @@ export default function ProductDetailPage() {
           {/* Product Image */}
           <div className="flex items-center justify-center bg-secondary rounded-lg h-96 md:h-full">
             <Image
-              src={product.image || "/placeholder.svg"}
+              src={product.image ?? "/placeholder.svg"} // ensure string
               alt={product.title}
               className="h-full w-full object-cover rounded-lg"
               width={900}
@@ -212,7 +222,7 @@ export default function ProductDetailPage() {
               <Link key={p.id} href={`/products/${p.id}`} className="group">
                 <div className="bg-secondary rounded-lg overflow-hidden mb-4 h-48 flex items-center justify-center group-hover:bg-secondary/80 transition-colors">
                   <Image
-                    src={p.image || "/placeholder.svg"}
+                    src={p.image ?? "/placeholder.svg"} // ensure string
                     alt={p.title}
                     className="h-full w-full object-cover"
                     width={200}

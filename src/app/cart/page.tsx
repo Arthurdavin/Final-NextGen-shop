@@ -65,8 +65,8 @@ export default function CartPage() {
                     src={item.image || "/placeholder.svg?height=96&width=96&query=product"} 
                     alt={item.title}
                     className="w-24 h-24 object-cover rounded"
-                    width={96}
-                    height={96}
+                    width={200}
+                    height={200}
                   />
                   <div className="flex-1">
                     <h3 className="font-semibold mb-2">{item.title}</h3>
