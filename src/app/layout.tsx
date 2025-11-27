@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/metadate.png", // Place this inside /public
+        url: "/metadatax.png", // IMPORTANT: this must exist in /public
         width: 1200,
         height: 630,
         alt: "NextGen Shop Banner",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "NextGen Shop",
     description:
       "Explore the best electronics, gadgets & lifestyle items at amazing prices.",
-    images: ["/metadatax.png"],
+    images: ["/metadatax.png"], // same image for consistency
   },
 
   robots: {
