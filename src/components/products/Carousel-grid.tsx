@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProductCard } from '@/components/products/Product-card';
 import type { Product } from '@/data/mock-data';
+import Link from 'next/link';
 
 interface CarouselGridProps {
   products: Product[];
@@ -11,48 +12,7 @@ interface CarouselGridProps {
   subtitle?: string;
 }
 
-function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 33,
-    minutes: 18,
-    seconds: 54,
-  });
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        else if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        else if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        else if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const TimeUnit = ({ label, value }: { label: string; value: number }) => (
-    <div className="text-center">
-      <div className="bg-primary text-primary-foreground rounded px-3 py-2 text-lg font-bold">
-        {String(value).padStart(2, '0')}
-      </div>
-      <p className="text-muted-foreground text-xs mt-1">{label}</p>
-    </div>
-  );
-
-  return (
-    <div className="flex gap-2 md:gap-4 items-center">
-      <TimeUnit label="Days" value={timeLeft.days} />
-      <span className="text-primary font-bold">:</span>
-      <TimeUnit label="Hours" value={timeLeft.hours} />
-      <span className="text-primary font-bold">:</span>
-      <TimeUnit label="Mins" value={timeLeft.minutes} />
-      <span className="text-primary font-bold">:</span>
-      <TimeUnit label="Secs" value={timeLeft.seconds} />
-    </div>
-  );
-}
 
 export function CarouselGrid({ products, title, subtitle }: CarouselGridProps) {
   const scrollContainer = useRef<HTMLDivElement>(null);
@@ -103,7 +63,12 @@ export function CarouselGrid({ products, title, subtitle }: CarouselGridProps) {
             )}
             <h2 className="text-3xl font-bold text-foreground">{title}</h2>
           </div>
-          <CountdownTimer />
+          <Link
+            href="/products"
+            className="text-primary hover:underline font-semibold hidden md:block"
+          >
+            View All →
+          </Link>
         </div>
 
         {/* Carousel Container */}

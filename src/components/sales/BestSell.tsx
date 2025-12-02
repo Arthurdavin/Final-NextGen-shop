@@ -18,12 +18,7 @@ export function BestSell() {
             </div>
             <h2 className="text-3xl font-bold text-foreground mt-2">Flash Sales</h2>
           </div>
-          <Link
-            href="/products"
-            className="text-primary hover:underline font-semibold hidden md:block"
-          >
-            View All →
-          </Link>
+        
         </div>
 
         {/* Product grid - animated */}
