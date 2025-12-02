@@ -16,7 +16,7 @@ export function BestSell() {
               <div className="w-4 h-10 bg-primary rounded"></div>
               <h3 className="text-primary font-semibold">Today</h3>
             </div>
-            <h2 className="text-3xl font-bold text-foreground mt-2">Best Selling Products</h2>
+            <h2 className="text-3xl font-bold text-foreground mt-2">Flash Sales</h2>
           </div>
           <Link
             href="/products"

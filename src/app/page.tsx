@@ -56,7 +56,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto p-4">
           <IPhoneBannerSlider/>
         </div>
-        <CarouselGrid products={bestSellingProducts} title="Flash Sales" subtitle="This Month" />
+        <CarouselGrid products={bestSellingProducts} title="Best Selling Products" subtitle="This Month" />
         <BrowseByCategory />
         <BestSell />
         <MusicPromoBanner />
