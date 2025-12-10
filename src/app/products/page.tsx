@@ -23,7 +23,7 @@ export default function AllProductsPage() {
     () => Array.from(new Set(products.map((p) => p.category).filter(Boolean))) as string[],
     [products]
   );
-
+// fiter product
   const filteredProducts = useMemo(() => {
     let list = [...products];
 

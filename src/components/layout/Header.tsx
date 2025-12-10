@@ -43,6 +43,7 @@ function CartBadge() {
   );
 }
 
+
 function WishlistBadge() {
   const [mounted, setMounted] = useState(false);
   const wishlistCount = useWishlist((state) => state.items.length);
@@ -61,9 +62,6 @@ function WishlistBadge() {
   );
 }
 
-/* ----------------------
-       HEADER
------------------------- */
 export function Header() {
   const router = useRouter();
   const pathname = usePathname();

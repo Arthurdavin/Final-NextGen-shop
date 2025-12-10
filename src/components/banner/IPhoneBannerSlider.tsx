@@ -15,7 +15,7 @@ export default function IPhoneBannerSlider() {
       id: 1,
       title: "iPhone 14 Series",
       subtitle: "Up to 10% off Voucher",
-      image: "/iphone14pro.png",
+      image: "/smartphone.jpg",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function IPhoneBannerSlider() {
       id: 3,
       title: "iPhone 14 Pro Max",
       subtitle: "Limited Stock Offer",
-      image: "/smartphone.jpg",
+      image: "/ipone14pro.png",
     },
   ];
 

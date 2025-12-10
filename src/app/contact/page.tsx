@@ -51,7 +51,7 @@ export default function ContactPage() {
               <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Call Us</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-300">Available 24/7, 7 days a week.</p>
-            <p className="mt-2 font-semibold text-gray-800 dark:text-gray-100">+8801611112222</p>
+            <p className="mt-2 font-semibold text-gray-800 dark:text-gray-100">+885 81 528 714</p>
           </motion.div>
 
           {/* Write Us */}
@@ -69,10 +69,10 @@ export default function ContactPage() {
               Fill out our form and we will contact you within 24 hours.
             </p>
             <p className="mt-3 font-semibold text-gray-800 dark:text-gray-100">
-              customer@exclusive.com
+              customer@nextgenshop.com
             </p>
             <p className="font-semibold text-gray-800 dark:text-gray-100">
-              support@exclusive.com
+              support@nextgenshop.com
             </p>
           </motion.div>
         </motion.div>

@@ -120,10 +120,8 @@ export default function NewArrivalSection() {
                   </a>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>

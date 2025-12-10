@@ -26,8 +26,8 @@ export default function ContactPage() {
             </div>
             <p className="text-gray-600">Fill out our form and we will contact you within 24 hours.</p>
 
-            <p className="mt-3 font-semibold">Email: customer@exclusive.com</p>
-            <p className="font-semibold">Email: support@exclusive.com</p>
+            <p className="mt-3 font-semibold">Email: customer@nextgenshop.com</p>
+            <p className="font-semibold">Email: support@nextgenshop.com</p>
           </div>
         </div>
 

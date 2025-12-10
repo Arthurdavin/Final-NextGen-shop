@@ -12,8 +12,6 @@ interface CarouselGridProps {
   subtitle?: string;
 }
 
-
-
 export function CarouselGrid({ products, title, subtitle }: CarouselGridProps) {
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

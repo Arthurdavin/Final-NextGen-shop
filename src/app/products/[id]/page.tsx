@@ -10,13 +10,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function ProductDetailPage() {
+  // Get product ID from URL
   const params = useParams();
   const rawId = params.id;
   const productId = Number(Array.isArray(rawId) ? rawId[0] : rawId ?? "");
+  // Manage local UI state
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const [wishlistFeedback, setWishlistFeedback] = useState<string | null>(null);
-
+// Access cart & wishlist global state
   const addToCart = useCart((state) => state.addToCart);
   const { items: wishlistItems, addToWishlist, removeFromWishlist } = useWishlist();
 
@@ -31,25 +33,43 @@ export default function ProductDetailPage() {
   if (isNaN(productId)) {
     return <div className="min-h-screen flex items-center justify-center text-gray-800 dark:text-gray-200">Invalid Product ID</div>;
   }
-
+// Find current product
   const product = products.find((p) => p.id === productId);
 
-  if (!product) {
-    return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Product not found</h1>
-          <Link href="/">
-            <Button className="bg-destructive hover:bg-destructive/90 text-destructive-foreground flex items-center gap-2">
-              <ArrowLeft size={18} />
-              Back to Home
-            </Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
+if (!product) {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+      <div className="bg-card border border-border rounded-2xl shadow-lg p-10 max-w-md text-center animate-in fade-in slide-in-from-bottom-4 duration-300">
 
+        {/* Icon */}
+        <div className="mb-6 flex justify-center">
+          <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center shadow-inner">
+            <span className="text-4xl">😢</span>
+          </div>
+        </div>
+
+        {/* Title */}
+        <h1 className="text-3xl font-bold mb-2">Product Not Found</h1>
+
+        {/* Sub text */}
+        <p className="text-muted-foreground mb-6">
+          Sorry, we can’t find the product you’re looking for.  
+          It may have been removed or moved to another category.
+        </p>
+
+        {/* Button */}
+        <Link href="/">
+          <Button className="w-full rounded-xl h-12 text-base font-medium flex items-center justify-center gap-2">
+            <ArrowLeft size={18} />
+            Back to Home
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+// Add to cart logic
   const handleAddToCart = () => {
     addToCart({
       ...product,
@@ -62,7 +82,7 @@ export default function ProductDetailPage() {
   };
 
   const isInWishlist = wishlistItems.some((item) => item.id === product.id);
-
+// Wishlist toggle
   const toggleWishlist = () => {
     if (isInWishlist) {
       removeFromWishlist(product.id);
@@ -78,7 +98,7 @@ export default function ProductDetailPage() {
     }
     setTimeout(() => setWishlistFeedback(null), 2000);
   };
-
+// relate products
   const relatedProducts = products.filter((p) => p.id !== product.id).slice(0, 4);
 
   return (
@@ -94,6 +114,7 @@ export default function ProductDetailPage() {
       </nav>
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 py-12">
+        {/* Card detail */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Product Image */}
           <div className="flex items-center justify-center bg-secondary rounded-lg h-96 md:h-full">
@@ -101,8 +122,8 @@ export default function ProductDetailPage() {
               src={product.image ?? "/placeholder.svg"}
               alt={product.title ?? "Product Image"}
               className="h-full w-full object-cover rounded-lg"
-              width={900}
-              height={900}
+              width={1000}
+              height={1000}
             />
           </div>
 

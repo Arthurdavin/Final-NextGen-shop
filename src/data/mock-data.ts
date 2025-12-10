@@ -1,3 +1,4 @@
+// CarouselGrid
 export interface Product {
   id: number;
   title: string;
@@ -15,7 +16,7 @@ export interface Category {
   name: string;
   icon: string;
 }
-
+// brown by categories 
 export const categories: Category[] = [
   { id: 1, name: 'Phones', icon: '📱' },
   { id: 2, name: 'Computers', icon: '💻' },
@@ -24,7 +25,7 @@ export const categories: Category[] = [
   { id: 5, name: 'Headphones', icon: '🎧' },
   { id: 6, name: 'Gaming', icon: '🎮' },
 ];
-
+// Explore Our Products and best sells
 export const flashSalesProducts: Product[] = [
   {
     id: 1,
